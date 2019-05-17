@@ -893,44 +893,4 @@ public class ComplexTest {
         Assert.assertTrue(Complex.ofCartesian(re, im).equals(Complex.parse(str)));
     }
 
-
-    @Test
-    public void testAddTakingDoubleReturningComplexWhereGetRealIsNegativeAndExpReturningComplexWhereIsNaNIsTrue() {
-        Complex complex = new Complex(0.0, 0.0);
-
-        try {
-            complex.nthRoot((-1642));
-            fail("Expecting exception: RuntimeException");
-        } catch(RuntimeException e) {
-            assertEquals("cannot compute nth root for null or negative n: {0}",e.getMessage());
-            assertEquals(Complex.class.getName(), e.getStackTrace()[0].getClassName());
-        }
-    }
-
-
-    @Test
-    public void testDivideTakingComplexThrowsRuntimeException() {
-        Complex complex = new Complex(2732.59210279);
-
-        try {
-            complex.NaN.divide(null);
-            fail("Expecting exception: RuntimeException");
-        } catch(RuntimeException e) {
-            assertEquals("Null Argument to Complex Method",e.getMessage());
-            assertEquals(Complex.class.getName(), e.getStackTrace()[0].getClassName());
-        }
-    }
-
-    @Test
-    public void testSubtractTakingComplex() {
-        Complex complex = new Complex(0.0, 0.0);
-        Complex complexTwo = complex.INF.sqrt();
-        Complex complexThree = complex.asin();
-        Complex complexFour = complexThree.pow(complexTwo);
-        complexFour.NaN.subtract(complexTwo);
-        complexThree.multiply(complex);
-
-        assertFalse( Complex.equals(complex, complexFour, 0) );
-    }
-
 }
